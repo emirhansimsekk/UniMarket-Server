@@ -63,6 +63,11 @@ app.get("/clothes", async (req,res) => {
     const data = await pool.query(query);
     res.status(200).send({children: data.rows} )
 })
+app.get("/categories", async (req,res) => {
+    const query = 'SELECT * FROM categories ORDER BY category_id ASC';
+    const data = await pool.query(query);
+    res.status(200).send({children: data.rows} )
+})
 //tüm ürünleri id'si azalarak sıralar
 app.get("/products:sort=product_id:desc", async (req,res) => {
     const query = 'SELECT * FROM products ORDER BY product_id DESC';
